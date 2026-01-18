@@ -14,9 +14,10 @@ app.get("/health", (_, res) => {
   res.json({ status: "MiniDNA backend running 🚀" });
 });
 
-const PORT = process.env.PORT || 4000;
+// Cloud Run uses PORT env var, defaults to 8080 for production
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
 
 app.post("/items", async (req, res) => {
